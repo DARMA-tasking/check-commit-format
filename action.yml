@@ -1,0 +1,9 @@
+name: Check DARMA Commit Style
+author: lifflander
+branding:
+  icon: 'search'
+  color: 'green'
+description: Commit style checker
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
