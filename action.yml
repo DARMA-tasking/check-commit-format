@@ -4,6 +4,13 @@ branding:
   icon: 'search'
   color: 'green'
 description: Commit style checker
+inputs:
+  revision:
+    description: 'Base sha to build range for checking'
+    required: true
+    default: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  args:
+    - ${{ inputs.revision }}
