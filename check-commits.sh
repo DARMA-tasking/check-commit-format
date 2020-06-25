@@ -23,10 +23,10 @@ if git rev-parse --git-dir 2> "$repository"; then
       ## Allow commit messages that start with "Merge..."
       if echo "$commit" | grep -q '^Merge'
       then
-          test 1;#echo "Found merge $commit"
+          echo "Found valid merge: $commit"
       elif echo "$commit" | grep -q '^#[0-9]\+[: ]'
       then
-          test 1;#echo "Found issue $commit"
+          echo "Found valid issue: $commit"
       else
           bad_commits+=$([[ -z "$bad_commits" ]] && echo "$sha $commit" || echo $'\n'"$sha $commit")
       fi
@@ -43,7 +43,9 @@ then
     echo -e "\n***** Failing Commits that don't match the style  *****\n"
     echo -e "${bad_commits[@]}"
     echo -e "\nFailed.\n"
-     code=1
+    code=1
+else
+    echo -e "All commits match the required style: : 'Merge*' OR '^#[0-9]+[: ]'\n"
 fi
 
 exit $code
