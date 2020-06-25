@@ -39,13 +39,17 @@ code=0
 
 if test ! -z "$bad_commits"
 then
-    echo -e "Every commit must match these patterns: 'Merge*' OR '^#[0-9]+[: ]'\n"
-    echo -e "\n***** Failing Commits that don't match the style  *****\n"
+    echo -e "\n\nEvery commit must match these patterns: 'Merge*' OR '^#[0-9]+[: ]'\n"
+    echo -e "\n##########################################################################"
+    echo -e "*************** Failing Commits that don't match the style  **************"
+    echo -e "##########################################################################\n"
     echo -e "${bad_commits[@]}"
     echo -e "\nFailed.\n"
     code=1
 else
-    echo -e "All commits match the required style: : 'Merge*' OR '^#[0-9]+[: ]'\n"
+    echo -e "\n##########################################################################"
+    echo -e "SUCCESS! All commits match the required format: 'Merge*' OR '^#[0-9]+[: ]'"
+    echo -e "##########################################################################"
 fi
 
 exit $code
